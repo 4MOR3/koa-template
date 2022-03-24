@@ -1,13 +1,7 @@
 import Koa from 'koa'
 import Router from './router'
-import Api from './Api'
 
-declare module 'koa' { 
-  interface Context<T = Api.BaseApi> { 
-    body: T
-  }
-}
-async function handler(ctx: Koa.Context<Api.BaseApi>, next: Koa.Next): Promise<void>{
+async function handler(ctx: Koa.Context, next: Koa.Next): Promise<void>{
   try {
     await next();
   } catch (err: any) {
